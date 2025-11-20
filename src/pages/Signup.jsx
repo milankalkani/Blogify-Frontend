@@ -17,7 +17,6 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-[#F7CED7] via-[#F0E5EF] to-[#CDE7FF] flex items-center justify-center p-6">
-
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -39,7 +38,11 @@ const Signup = () => {
           validationSchema={signupSchema}
           onSubmit={async (values, { setSubmitting }) => {
             try {
-              await signup(values.name, values.email, values.password);
+              await signup({
+                name: values.name,
+                email: values.email,
+                password: values.password,
+              });
               navigate("/");
             } catch (err) {
               alert("Registration failed");
@@ -49,10 +52,11 @@ const Signup = () => {
         >
           {({ isSubmitting }) => (
             <Form className="space-y-5">
-
               {/* Name */}
               <div>
-                <label className="text-gray-800 font-semibold mb-1 block">Name</label>
+                <label className="text-gray-800 font-semibold mb-1 block">
+                  Name
+                </label>
                 <Field
                   type="text"
                   name="name"
@@ -68,7 +72,9 @@ const Signup = () => {
 
               {/* Email */}
               <div>
-                <label className="text-gray-800 font-semibold mb-1 block">Email</label>
+                <label className="text-gray-800 font-semibold mb-1 block">
+                  Email
+                </label>
                 <Field
                   type="email"
                   name="email"
@@ -84,7 +90,9 @@ const Signup = () => {
 
               {/* Password */}
               <div>
-                <label className="text-gray-800 font-semibold mb-1 block">Password</label>
+                <label className="text-gray-800 font-semibold mb-1 block">
+                  Password
+                </label>
                 <Field
                   type="password"
                   name="password"

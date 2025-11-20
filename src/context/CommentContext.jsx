@@ -5,7 +5,7 @@ import { io } from "socket.io-client";
 const CommentContext = createContext();
 
 // 🔌 Initialize socket connection
-const socket = io("http://localhost:5000", {
+const socket = io(process.env.REACT_APP_API_URL, {
     transports: ["websocket"],
     reconnection: true,
 });
