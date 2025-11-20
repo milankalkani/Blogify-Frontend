@@ -18,15 +18,20 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // ✅ Signup
-  const signup = async (formData) => {
-    const res = await axiosInstance.post("/auth/signup  ", formData);
-    if (res.data.token) {
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      setUser(res.data.user);
-    }
-    return res.data;
-  };
+  const signup = async ({ name, email, password }) => {
+  const res = await axiosInstance.post("/auth/signup", {
+    name,
+    email,
+    password,
+  });
+  if (res.data.token) {
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    setUser(res.data.user);
+  }
+  return res.data;
+};
+
 
   // ✅ Login
   const login = async (email, password) => {
