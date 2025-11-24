@@ -21,7 +21,7 @@ const Navbar = () => {
         onClick={toggleMenu}
       >
         <img
-          src={user?.avatar || "https://i.pravatar.cc/80"}
+          src={user?.avatar?.url || "https://i.pravatar.cc/80"}
           alt="User Avatar"
           className="w-12 h-12 rounded-full border-2 border-white shadow-lg"
         />
@@ -38,18 +38,34 @@ const Navbar = () => {
             className="fixed top-20 left-6 w-56 bg-white/70 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl p-5 z-40"
           >
             <div className="flex flex-col gap-3">
-              <Link to="/" className="hover:text-[#5D866C]" onClick={() => setOpen(false)}>
+              <Link
+                to="/"
+                className="hover:text-[#5D866C]"
+                onClick={() => setOpen(false)}
+              >
                 🏠 Home
               </Link>
               {user && (
                 <>
-                  <Link to="/create" className="hover:text-[#5D866C]" onClick={() => setOpen(false)}>
+                  <Link
+                    to="/create"
+                    className="hover:text-[#5D866C]"
+                    onClick={() => setOpen(false)}
+                  >
                     ✍️ Create Post
                   </Link>
-                  <Link to="/myposts" className="hover:text-[#5D866C]" onClick={() => setOpen(false)}>
+                  <Link
+                    to="/myposts"
+                    className="hover:text-[#5D866C]"
+                    onClick={() => setOpen(false)}
+                  >
                     📜 My Posts
                   </Link>
-                  <Link to="/profile" className="hover:text-[#5D866C]" onClick={() => setOpen(false)}>
+                  <Link
+                    to="/profile"
+                    className="hover:text-[#5D866C]"
+                    onClick={() => setOpen(false)}
+                  >
                     👤 Profile
                   </Link>
                 </>
@@ -67,7 +83,11 @@ const Navbar = () => {
                   🚪 Logout
                 </button>
               ) : (
-                <Link to="/login" className="hover:text-[#5D866C]" onClick={() => setOpen(false)}>
+                <Link
+                  to="/login"
+                  className="hover:text-[#5D866C]"
+                  onClick={() => setOpen(false)}
+                >
                   🔑 Login
                 </Link>
               )}
