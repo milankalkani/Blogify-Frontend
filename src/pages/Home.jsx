@@ -6,16 +6,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const Home = () => {
   const { scrollYProgress } = useScroll();
 
-  // Soft parallax + fade on scroll
   const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.9]);
 
   return (
-    <motion.div
-      style={{ y, opacity }}
-      className="min-h-screen bg-gradient-to-br from-[#fdfbfb] to-[#ebedee]"
-    >
-      {/* 🌟 HERO SECTION */}
+    <motion.div style={{ y, opacity }} className="bg-transparent">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -23,8 +18,6 @@ const Home = () => {
       >
         <Hero />
       </motion.div>
-
-      {/* 📝 POST LIST SECTION */}
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -42,7 +35,7 @@ const Home = () => {
       </motion.div>
 
       <motion.div
-        className="max-w-7xl mx-auto px-6 py-16"
+        className="max-w-7xl mx-auto px-6 pt-16 mb-0"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7 }}
